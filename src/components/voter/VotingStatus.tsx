@@ -16,7 +16,13 @@ export const VotingStatus = () => {
   const now = new Date();
   
   const formatDateDisplay = (date: Date) => {
-    return `${date.toLocaleDateString()} at ${date.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' })}`;
+    return date.toLocaleDateString('id-ID', { 
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    });
   };
   
   let statusIcon;
@@ -25,40 +31,46 @@ export const VotingStatus = () => {
   let statusColor;
   
   if (!votingActive && now < startDate) {
-    statusIcon = <Clock className="h-5 w-5 text-vote-warning" />;
+    statusIcon = <Clock className="h-6 w-6 text-amber-500" />;
     statusTitle = "Pemilihan Belum Dimulai";
     statusDescription = `Pemilihan akan dimulai pada ${formatDateDisplay(startDate)}`;
-    statusColor = "border-vote-warning bg-amber-50";
+    statusColor = "bg-gradient-to-r from-amber-50 to-yellow-50 border-amber-200";
   } else if (!votingActive && now > endDate) {
-    statusIcon = <AlertCircle className="h-5 w-5 text-vote-blue" />;
+    statusIcon = <AlertCircle className="h-6 w-6 text-vote-blue" />;
     statusTitle = "Periode Pemilihan Berakhir";
     statusDescription = `Pemilihan berakhir pada ${formatDateDisplay(endDate)}`;
-    statusColor = "border-vote-blue bg-blue-50";
+    statusColor = "bg-gradient-to-r from-blue-50 to-indigo-50 border-blue-200";
   } else if (hasVoted) {
-    statusIcon = <Check className="h-5 w-5 text-vote-success" />;
+    statusIcon = <Check className="h-6 w-6 text-green-600" />;
     statusTitle = "Anda Telah Memilih";
     statusDescription = `Terima kasih atas partisipasi Anda. Pemilihan berakhir pada ${formatDateDisplay(endDate)}`;
-    statusColor = "border-vote-success bg-green-50";
+    statusColor = "bg-gradient-to-r from-green-50 to-emerald-50 border-green-200";
   } else {
-    statusIcon = <Clock className="h-5 w-5 text-primary" />;
+    statusIcon = <Clock className="h-6 w-6 text-primary" />;
     statusTitle = "Pemilihan Sedang Berlangsung";
     statusDescription = `Pemilihan berlangsung hingga ${formatDateDisplay(endDate)}`;
-    statusColor = "border-primary bg-primary-foreground";
+    statusColor = "bg-gradient-to-r from-blue-50 to-sky-50 border-blue-200";
   }
   
   return (
-    <Card className={statusColor}>
+    <Card className={`shadow-sm overflow-hidden ${statusColor}`}>
       <CardHeader className="pb-2">
-        <CardTitle className="flex items-center gap-2">
-          {statusIcon}
-          {statusTitle}
-        </CardTitle>
-        <CardDescription>
-          {statusDescription}
-        </CardDescription>
+        <div className="flex items-center gap-4">
+          <div className={`p-3 rounded-full ${!votingActive && now < startDate ? 'bg-amber-100' : 
+                                              !votingActive && now > endDate ? 'bg-blue-100' : 
+                                              hasVoted ? 'bg-green-100' : 'bg-blue-100'}`}>
+            {statusIcon}
+          </div>
+          <div>
+            <CardTitle className="text-lg">{statusTitle}</CardTitle>
+            <CardDescription className="text-sm">
+              {statusDescription}
+            </CardDescription>
+          </div>
+        </div>
       </CardHeader>
       <CardContent>
-        <div className="text-sm">
+        <div className="text-sm px-4 py-3 bg-white/70 backdrop-blur-sm rounded-lg">
           {votingActive && !hasVoted && (
             <p className="font-medium">Silakan memberikan suara Anda dengan memilih salah satu kandidat di bawah ini.</p>
           )}

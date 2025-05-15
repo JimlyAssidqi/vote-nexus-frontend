@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { useVote, Candidate } from '@/contexts/VoteContext';
 import { useAuth } from '@/contexts/AuthContext';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
-import { Check } from 'lucide-react';
+import { Check, Vote } from 'lucide-react';
 
 interface CandidateCardProps {
   candidate: Candidate;
@@ -31,36 +31,39 @@ export const CandidateCard: React.FC<CandidateCardProps> = ({ candidate }) => {
   
   return (
     <>
-      <Card className="h-full flex flex-col transition-all duration-200 hover:shadow-md">
+      <Card className="overflow-hidden transition-all duration-200 hover:shadow-md">
         <CardHeader className="p-0 overflow-hidden">
-          <img
-            src={candidate.photoUrl}
-            alt={candidate.name}
-            className="w-full h-48 object-cover"
-          />
+          <div className="aspect-[4/3] relative overflow-hidden">
+            <img
+              src={candidate.photoUrl}
+              alt={candidate.name}
+              className="w-full h-full object-cover"
+            />
+          </div>
         </CardHeader>
-        <CardContent className="flex-1 flex flex-col p-4">
-          <h3 className="font-semibold text-lg mb-2">{candidate.name}</h3>
-          <p className="text-muted-foreground text-sm flex-1 mb-4">
+        <CardContent className="p-4">
+          <h3 className="font-semibold text-lg mb-1">{candidate.name}</h3>
+          <p className="text-sm text-muted-foreground line-clamp-3 mb-4 min-h-[3rem]">
             {candidate.description}
           </p>
-          <Button onClick={handleVoteClick} className="mt-auto">
-            Vote for this Candidate
+          <Button onClick={handleVoteClick} className="w-full rounded-full shadow-sm flex gap-2 items-center justify-center">
+            <Vote className="h-4 w-4" />
+            Pilih Kandidat Ini
           </Button>
         </CardContent>
       </Card>
       
       {/* Vote Confirmation Dialog */}
       <Dialog open={isConfirmOpen} onOpenChange={setIsConfirmOpen}>
-        <DialogContent>
+        <DialogContent className="sm:max-w-md">
           <DialogHeader>
-            <DialogTitle>Confirm Your Vote</DialogTitle>
+            <DialogTitle>Konfirmasi Pilihan Anda</DialogTitle>
             <DialogDescription>
-              You are about to vote for {candidate.name}. This action cannot be undone.
+              Anda akan memilih {candidate.name}. Tindakan ini tidak dapat dibatalkan.
             </DialogDescription>
           </DialogHeader>
           
-          <div className="flex items-center gap-4 p-4 border rounded-md">
+          <div className="flex items-center gap-4 p-4 border rounded-md bg-muted/20">
             <img
               src={candidate.photoUrl}
               alt={candidate.name}
@@ -72,10 +75,11 @@ export const CandidateCard: React.FC<CandidateCardProps> = ({ candidate }) => {
             </div>
           </div>
           
-          <DialogFooter>
-            <Button variant="outline" onClick={() => setIsConfirmOpen(false)}>Cancel</Button>
-            <Button onClick={handleConfirmVote}>
-              Confirm Vote
+          <DialogFooter className="gap-2 sm:gap-0">
+            <Button variant="outline" onClick={() => setIsConfirmOpen(false)}>Batal</Button>
+            <Button onClick={handleConfirmVote} className="gap-2">
+              <Check className="h-4 w-4" />
+              Konfirmasi Pilihan
             </Button>
           </DialogFooter>
         </DialogContent>
@@ -83,22 +87,24 @@ export const CandidateCard: React.FC<CandidateCardProps> = ({ candidate }) => {
       
       {/* Success Dialog */}
       <Dialog open={isSuccess} onOpenChange={setIsSuccess}>
-        <DialogContent>
+        <DialogContent className="sm:max-w-md">
           <DialogHeader>
-            <DialogTitle className="flex items-center gap-2 text-vote-success">
-              <Check className="h-5 w-5" />
-              Vote Recorded Successfully
+            <DialogTitle className="flex items-center gap-2 text-green-700">
+              <div className="bg-green-100 p-1 rounded-full">
+                <Check className="h-4 w-4 text-green-600" />
+              </div>
+              Suara Berhasil Direkam
             </DialogTitle>
             <DialogDescription>
-              Thank you for participating in the campus election. Your vote has been recorded.
+              Terima kasih telah berpartisipasi dalam pemilihan kampus. Suara Anda telah direkam.
             </DialogDescription>
           </DialogHeader>
           
-          <div className="flex items-center gap-4 p-4 border rounded-md bg-muted/20">
+          <div className="flex items-center gap-4 p-4 bg-green-50 rounded-md">
             <img
               src={candidate.photoUrl}
               alt={candidate.name}
-              className="h-16 w-16 rounded-full object-cover border-2 border-vote-success"
+              className="h-16 w-16 rounded-full object-cover border-2 border-green-200"
             />
             <div>
               <h3 className="font-semibold">{candidate.name}</h3>
@@ -107,7 +113,10 @@ export const CandidateCard: React.FC<CandidateCardProps> = ({ candidate }) => {
           </div>
           
           <DialogFooter>
-            <Button onClick={() => setIsSuccess(false)}>Close</Button>
+            <Button onClick={() => window.location.reload()} className="gap-2">
+              <Check className="h-4 w-4" />
+              Selesai
+            </Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>
