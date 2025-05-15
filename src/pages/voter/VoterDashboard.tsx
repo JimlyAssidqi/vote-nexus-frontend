@@ -35,7 +35,7 @@ const VoterDashboard = () => {
   // Show already voted screen if user has voted and voting is still active
   const showVoted = hasVoted && votingActive;
   // Show results if voting has ended
-  const showResults = !votingActive && new Date() > new Date(new Date().setDate(new Date().getDate() - 1));
+  const showResults = !votingActive;
   
   return (
     <div className="space-y-6">
