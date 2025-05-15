@@ -41,54 +41,54 @@ export const VoterForm: React.FC<VoterFormProps> = ({ isOpen, onClose, voterToEd
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>{voterToEdit ? 'Edit Voter' : 'Add New Voter'}</DialogTitle>
+          <DialogTitle>{voterToEdit ? 'Edit Pemilih' : 'Tambah Pemilih Baru'}</DialogTitle>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="name">Name</Label>
+            <Label htmlFor="name">Nama</Label>
             <Input 
               id="name" 
               name="name" 
               value={formData.name} 
               onChange={handleChange} 
-              placeholder="Voter name"
+              placeholder="Nama pemilih"
               required
             />
           </div>
           
           <div className="space-y-2">
-            <Label htmlFor="nim">Student ID (NIM)</Label>
+            <Label htmlFor="nim">NIM (Nomor Induk Mahasiswa)</Label>
             <Input 
               id="nim" 
               name="nim" 
               value={formData.nim} 
               onChange={handleChange} 
-              placeholder="Student ID number"
+              placeholder="Nomor induk mahasiswa"
               required
             />
           </div>
           
           <div className="space-y-2">
-            <Label htmlFor="password">Password</Label>
+            <Label htmlFor="password">Kata Sandi</Label>
             <Input 
               id="password" 
               name="password"
               type="password"
               value={formData.password} 
               onChange={handleChange} 
-              placeholder={voterToEdit ? "Leave blank to keep current password" : "Set password for voter"}
+              placeholder={voterToEdit ? "Biarkan kosong untuk mempertahankan kata sandi saat ini" : "Tetapkan kata sandi untuk pemilih"}
               required={!voterToEdit}
             />
             {voterToEdit && (
               <p className="text-xs text-muted-foreground">
-                Leave blank to keep the current password unchanged
+                Biarkan kosong untuk mempertahankan kata sandi saat ini
               </p>
             )}
           </div>
           
           <DialogFooter>
-            <Button type="button" variant="outline" onClick={onClose}>Cancel</Button>
-            <Button type="submit">{voterToEdit ? 'Update' : 'Add'} Voter</Button>
+            <Button type="button" variant="outline" onClick={onClose}>Batal</Button>
+            <Button type="submit">{voterToEdit ? 'Perbarui' : 'Tambah'} Pemilih</Button>
           </DialogFooter>
         </form>
       </DialogContent>

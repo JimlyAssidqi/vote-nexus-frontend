@@ -26,23 +26,23 @@ export const VotingStatus = () => {
   
   if (!votingActive && now < startDate) {
     statusIcon = <Clock className="h-5 w-5 text-vote-warning" />;
-    statusTitle = "Voting Not Started Yet";
-    statusDescription = `Voting will begin on ${formatDateDisplay(startDate)}`;
+    statusTitle = "Pemilihan Belum Dimulai";
+    statusDescription = `Pemilihan akan dimulai pada ${formatDateDisplay(startDate)}`;
     statusColor = "border-vote-warning bg-amber-50";
   } else if (!votingActive && now > endDate) {
     statusIcon = <AlertCircle className="h-5 w-5 text-vote-blue" />;
-    statusTitle = "Voting Period Ended";
-    statusDescription = `Voting ended on ${formatDateDisplay(endDate)}`;
+    statusTitle = "Periode Pemilihan Berakhir";
+    statusDescription = `Pemilihan berakhir pada ${formatDateDisplay(endDate)}`;
     statusColor = "border-vote-blue bg-blue-50";
   } else if (hasVoted) {
     statusIcon = <Check className="h-5 w-5 text-vote-success" />;
-    statusTitle = "You Have Voted";
-    statusDescription = `Thank you for participating. Voting ends on ${formatDateDisplay(endDate)}`;
+    statusTitle = "Anda Telah Memilih";
+    statusDescription = `Terima kasih atas partisipasi Anda. Pemilihan berakhir pada ${formatDateDisplay(endDate)}`;
     statusColor = "border-vote-success bg-green-50";
   } else {
     statusIcon = <Clock className="h-5 w-5 text-primary" />;
-    statusTitle = "Voting in Progress";
-    statusDescription = `Voting is open until ${formatDateDisplay(endDate)}`;
+    statusTitle = "Pemilihan Sedang Berlangsung";
+    statusDescription = `Pemilihan berlangsung hingga ${formatDateDisplay(endDate)}`;
     statusColor = "border-primary bg-primary-foreground";
   }
   
@@ -60,16 +60,16 @@ export const VotingStatus = () => {
       <CardContent>
         <div className="text-sm">
           {votingActive && !hasVoted && (
-            <p className="font-medium">Please cast your vote by selecting one of the candidates below.</p>
+            <p className="font-medium">Silakan memberikan suara Anda dengan memilih salah satu kandidat di bawah ini.</p>
           )}
           {hasVoted && (
-            <p className="font-medium">Your vote has been recorded. Results will be available after the voting period ends.</p>
+            <p className="font-medium">Suara Anda telah tercatat. Hasil akan tersedia setelah periode pemilihan berakhir.</p>
           )}
           {!votingActive && now > endDate && (
-            <p className="font-medium">The voting period has ended. View the results below.</p>
+            <p className="font-medium">Periode pemilihan telah berakhir. Lihat hasil di bawah ini.</p>
           )}
           {!votingActive && now < startDate && (
-            <p className="font-medium">Please check back when the voting period begins.</p>
+            <p className="font-medium">Silakan periksa kembali saat periode pemilihan dimulai.</p>
           )}
         </div>
       </CardContent>

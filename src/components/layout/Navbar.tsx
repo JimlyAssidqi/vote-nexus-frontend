@@ -17,12 +17,12 @@ export const Navbar: React.FC = () => {
       if (user.role === 'admin') {
         items.push(
           { path: '/admin', label: 'Dashboard', icon: <Check className="h-4 w-4" /> },
-          { path: '/admin/candidates', label: 'Candidates', icon: <User className="h-4 w-4" /> },
-          { path: '/admin/voters', label: 'Voters', icon: <Users className="h-4 w-4" /> },
+          { path: '/admin/candidates', label: 'Kandidat', icon: <User className="h-4 w-4" /> },
+          { path: '/admin/voters', label: 'Pemilih', icon: <Users className="h-4 w-4" /> },
         );
       } else if (user.role === 'voter') {
         items.push(
-          { path: '/voter', label: 'Voting', icon: <Check className="h-4 w-4" /> },
+          { path: '/voter', label: 'Pemilihan', icon: <Check className="h-4 w-4" /> },
         );
       }
     }
@@ -61,18 +61,18 @@ export const Navbar: React.FC = () => {
           {user ? (
             <div className="flex items-center gap-4">
               <div className="hidden md:block text-sm">
-                <span className="text-muted-foreground">Signed in as </span>
+                <span className="text-muted-foreground">Masuk sebagai </span>
                 <span className="font-medium">{user.name}</span>
               </div>
               <Button size="sm" variant="outline" onClick={logout}>
                 <LogOut className="h-4 w-4 mr-2" />
-                Logout
+                Keluar
               </Button>
             </div>
           ) : (
             <Link to="/login">
               <Button size="sm" variant="default">
-                Sign In
+                Masuk
               </Button>
             </Link>
           )}

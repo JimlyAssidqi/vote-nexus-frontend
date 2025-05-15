@@ -27,9 +27,9 @@ const HomePage = () => {
           </div>
           
           {isAuthenticated ? (
-            <Button onClick={handleGetStarted}>Go to Dashboard</Button>
+            <Button onClick={handleGetStarted}>Ke Dashboard</Button>
           ) : (
-            <Button onClick={() => navigate('/login')}>Sign In</Button>
+            <Button onClick={() => navigate('/login')}>Masuk</Button>
           )}
         </div>
       </header>
@@ -40,18 +40,18 @@ const HomePage = () => {
             <div className="grid gap-8 md:grid-cols-2 md:gap-12 items-center">
               <div className="space-y-4">
                 <h1 className="text-4xl md:text-5xl font-extrabold tracking-tighter">
-                  Campus <span className="text-vote-blue">Voting</span> Made Simple
+                  Pemilihan <span className="text-vote-blue">Kampus</span> Menjadi Mudah
                 </h1>
                 <p className="text-lg text-muted-foreground">
-                  A secure and efficient platform for campus elections. Vote for your preferred candidates with ease.
+                  Platform yang aman dan efisien untuk pemilihan kampus. Pilih kandidat favorit Anda dengan mudah.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Button size="lg" onClick={handleGetStarted}>
-                    Get Started
+                    Mulai
                   </Button>
                   {!isAuthenticated && (
                     <Button size="lg" variant="outline" onClick={() => navigate('/login')}>
-                      Learn More
+                      Pelajari Lebih Lanjut
                     </Button>
                   )}
                 </div>
@@ -64,21 +64,21 @@ const HomePage = () => {
                   </div>
                   <div className="space-y-6">
                     <div className="space-y-2">
-                      <h3 className="text-lg font-medium">Secure Voting</h3>
+                      <h3 className="text-lg font-medium">Pemungutan Suara Aman</h3>
                       <p className="text-muted-foreground">
-                        Our platform ensures each voter can only vote once, maintaining election integrity.
+                        Platform kami memastikan setiap pemilih hanya dapat memilih sekali, menjaga integritas pemilihan.
                       </p>
                     </div>
                     <div className="space-y-2">
-                      <h3 className="text-lg font-medium">Real-time Results</h3>
+                      <h3 className="text-lg font-medium">Hasil Waktu Nyata</h3>
                       <p className="text-muted-foreground">
-                        View election results as soon as the voting period ends.
+                        Lihat hasil pemilihan segera setelah periode pemungutan suara berakhir.
                       </p>
                     </div>
                     <div className="space-y-2">
-                      <h3 className="text-lg font-medium">User-friendly Interface</h3>
+                      <h3 className="text-lg font-medium">Antarmuka Ramah Pengguna</h3>
                       <p className="text-muted-foreground">
-                        Easy-to-use platform for both administrators and voters.
+                        Platform yang mudah digunakan baik untuk administrator maupun pemilih.
                       </p>
                     </div>
                   </div>
@@ -90,7 +90,7 @@ const HomePage = () => {
         
         <section className="py-12 bg-white">
           <div className="container mx-auto px-4 md:px-6 text-center">
-            <h2 className="text-2xl font-semibold mb-6">How It Works</h2>
+            <h2 className="text-2xl font-semibold mb-6">Cara Kerjanya</h2>
             <div className="grid md:grid-cols-3 gap-8">
               <div className="flex flex-col items-center p-4">
                 <div className="bg-vote-blue/10 rounded-full p-3 mb-4">
@@ -98,8 +98,8 @@ const HomePage = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                   </svg>
                 </div>
-                <h3 className="text-lg font-medium mb-2">Sign In</h3>
-                <p className="text-muted-foreground">Login with your student ID or admin credentials.</p>
+                <h3 className="text-lg font-medium mb-2">Masuk</h3>
+                <p className="text-muted-foreground">Login dengan ID mahasiswa atau kredensial admin Anda.</p>
               </div>
               <div className="flex flex-col items-center p-4">
                 <div className="bg-vote-indigo/10 rounded-full p-3 mb-4">
@@ -107,8 +107,8 @@ const HomePage = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h8m-8 6h16" />
                   </svg>
                 </div>
-                <h3 className="text-lg font-medium mb-2">Choose Candidate</h3>
-                <p className="text-muted-foreground">Browse candidates and select your preferred choice.</p>
+                <h3 className="text-lg font-medium mb-2">Pilih Kandidat</h3>
+                <p className="text-muted-foreground">Jelajahi kandidat dan pilih yang Anda sukai.</p>
               </div>
               <div className="flex flex-col items-center p-4">
                 <div className="bg-vote-success/10 rounded-full p-3 mb-4">
@@ -116,8 +116,8 @@ const HomePage = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <h3 className="text-lg font-medium mb-2">Submit Vote</h3>
-                <p className="text-muted-foreground">Confirm your selection to cast your vote securely.</p>
+                <h3 className="text-lg font-medium mb-2">Kirim Suara</h3>
+                <p className="text-muted-foreground">Konfirmasi pilihan Anda untuk memberikan suara dengan aman.</p>
               </div>
             </div>
           </div>
@@ -131,7 +131,7 @@ const HomePage = () => {
             <span className="text-sm font-medium">VoteNexus © 2025</span>
           </div>
           <p className="text-sm text-muted-foreground">
-            A secure campus voting platform
+            Platform pemilihan kampus yang aman
           </p>
         </div>
       </footer>

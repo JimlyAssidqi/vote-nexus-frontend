@@ -39,13 +39,13 @@ const VoterDashboard = () => {
   
   return (
     <div className="space-y-6">
-      <h1 className="text-3xl font-bold">Campus Election</h1>
+      <h1 className="text-3xl font-bold">Pemilihan Kampus</h1>
       
       <VotingStatus />
       
       {showCandidates && (
         <div className="space-y-4">
-          <h2 className="text-xl font-semibold">Vote for a Candidate</h2>
+          <h2 className="text-xl font-semibold">Pilih Kandidat</h2>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {candidates.map((candidate) => (
               <CandidateCard key={candidate.id} candidate={candidate} />
@@ -59,10 +59,10 @@ const VoterDashboard = () => {
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Check className="h-5 w-5 text-vote-success" />
-              Thank You for Voting
+              Terima Kasih Telah Memilih
             </CardTitle>
             <CardDescription>
-              Your vote has been successfully recorded.
+              Suara Anda telah berhasil dicatat.
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -74,13 +74,13 @@ const VoterDashboard = () => {
                   className="h-16 w-16 rounded-full object-cover border-2 border-vote-success"
                 />
                 <div>
-                  <h3 className="font-semibold">You voted for: {votedCandidate.name}</h3>
+                  <h3 className="font-semibold">Anda memilih: {votedCandidate.name}</h3>
                   <p className="text-sm text-muted-foreground">{votedCandidate.description}</p>
                 </div>
               </div>
             ) : (
               <p className="text-sm text-muted-foreground">
-                Results will be available after the voting period has ended.
+                Hasil akan tersedia setelah periode pemilihan berakhir.
               </p>
             )}
           </CardContent>
@@ -89,7 +89,7 @@ const VoterDashboard = () => {
       
       {showResults && (
         <div className="space-y-4">
-          <h2 className="text-xl font-semibold">Election Results</h2>
+          <h2 className="text-xl font-semibold">Hasil Pemilihan</h2>
           <ResultsView />
         </div>
       )}

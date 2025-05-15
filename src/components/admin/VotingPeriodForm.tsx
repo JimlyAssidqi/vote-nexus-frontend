@@ -42,15 +42,15 @@ export const VotingPeriodForm = () => {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Voting Period</CardTitle>
+        <CardTitle>Periode Pemungutan Suara</CardTitle>
         <CardDescription>
-          Set the start and end dates for the voting period
+          Tetapkan tanggal mulai dan berakhir untuk periode pemungutan suara
         </CardDescription>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="startDate">Start Date & Time</Label>
+            <Label htmlFor="startDate">Tanggal & Waktu Mulai</Label>
             <Input 
               id="startDate" 
               name="startDate" 
@@ -63,7 +63,7 @@ export const VotingPeriodForm = () => {
           </div>
           
           <div className="space-y-2">
-            <Label htmlFor="endDate">End Date & Time</Label>
+            <Label htmlFor="endDate">Tanggal & Waktu Berakhir</Label>
             <Input 
               id="endDate" 
               name="endDate" 
@@ -77,7 +77,7 @@ export const VotingPeriodForm = () => {
           </div>
           
           <div className="pt-2">
-            <Button type="submit" className="w-full">Save Voting Period</Button>
+            <Button type="submit" className="w-full">Simpan Periode Pemungutan Suara</Button>
             
             <div className={`mt-4 p-3 rounded-md border ${
               isActive ? "bg-green-50 border-green-200" : 
@@ -89,16 +89,16 @@ export const VotingPeriodForm = () => {
                 isEnded ? "text-gray-600" : 
                 "text-yellow-600"
               }`}>
-                {isActive ? "Voting is currently active" : 
-                 isEnded ? "Voting period has ended" : 
-                 "Voting period has not started yet"}
+                {isActive ? "Pemungutan suara sedang berlangsung" : 
+                 isEnded ? "Periode pemungutan suara telah berakhir" : 
+                 "Periode pemungutan suara belum dimulai"}
               </p>
               <p className="text-xs mt-1">
                 {isActive ? 
-                  `Voting ends on ${endDate.toLocaleDateString()} at ${endDate.toLocaleTimeString()}` :
+                  `Pemungutan suara berakhir pada ${endDate.toLocaleDateString()} jam ${endDate.toLocaleTimeString()}` :
                  isEnded ? 
-                  `Voting ended on ${endDate.toLocaleDateString()} at ${endDate.toLocaleTimeString()}` :
-                  `Voting starts on ${startDate.toLocaleDateString()} at ${startDate.toLocaleTimeString()}`
+                  `Pemungutan suara berakhir pada ${endDate.toLocaleDateString()} jam ${endDate.toLocaleTimeString()}` :
+                  `Pemungutan suara dimulai pada ${startDate.toLocaleDateString()} jam ${startDate.toLocaleTimeString()}`
                 }
               </p>
             </div>

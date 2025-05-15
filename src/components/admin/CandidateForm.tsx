@@ -42,41 +42,41 @@ export const CandidateForm: React.FC<CandidateFormProps> = ({ isOpen, onClose, c
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>{candidateToEdit ? 'Edit Candidate' : 'Add New Candidate'}</DialogTitle>
+          <DialogTitle>{candidateToEdit ? 'Edit Kandidat' : 'Tambah Kandidat Baru'}</DialogTitle>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="name">Name</Label>
+            <Label htmlFor="name">Nama</Label>
             <Input 
               id="name" 
               name="name" 
               value={formData.name} 
               onChange={handleChange} 
-              placeholder="Candidate name"
+              placeholder="Nama kandidat"
               required
             />
           </div>
           
           <div className="space-y-2">
-            <Label htmlFor="description">Description</Label>
+            <Label htmlFor="description">Deskripsi</Label>
             <Textarea 
               id="description" 
               name="description" 
               value={formData.description} 
               onChange={handleChange} 
-              placeholder="Candidate description or platform"
+              placeholder="Deskripsi atau platform kandidat"
               required
             />
           </div>
           
           <div className="space-y-2">
-            <Label htmlFor="photoUrl">Photo URL</Label>
+            <Label htmlFor="photoUrl">URL Foto</Label>
             <Input 
               id="photoUrl" 
               name="photoUrl" 
               value={formData.photoUrl} 
               onChange={handleChange} 
-              placeholder="URL to candidate's photo"
+              placeholder="URL ke foto kandidat"
               required
             />
           </div>
@@ -85,15 +85,15 @@ export const CandidateForm: React.FC<CandidateFormProps> = ({ isOpen, onClose, c
             <div className="flex justify-center">
               <img 
                 src={formData.photoUrl} 
-                alt="Candidate preview" 
+                alt="Kandidat preview" 
                 className="h-24 w-24 rounded-full object-cover border"
               />
             </div>
           )}
           
           <DialogFooter>
-            <Button type="button" variant="outline" onClick={onClose}>Cancel</Button>
-            <Button type="submit">{candidateToEdit ? 'Update' : 'Add'} Candidate</Button>
+            <Button type="button" variant="outline" onClick={onClose}>Batal</Button>
+            <Button type="submit">{candidateToEdit ? 'Perbarui' : 'Tambah'} Kandidat</Button>
           </DialogFooter>
         </form>
       </DialogContent>
